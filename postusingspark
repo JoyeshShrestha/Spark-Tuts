@@ -1,0 +1,10 @@
+post("/users",(Request request, Response response)->{
+    response.type("application");
+    User user = new Gson().fromJson(request.body(), User.class);
+    String responseBody = new Gson().toJson(user);
+    
+
+    System.out.println(responseBody);
+    System.out.println(user.getId());
+    
+    return responseBody;
