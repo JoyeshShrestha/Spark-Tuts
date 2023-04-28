@@ -1,0 +1,35 @@
+public List display() throws SQLException{
+        conn= getConnection();
+//               JSONObject json = new JSONObject();
+
+//        String[] data = new String[100];
+      
+        String query = "SELECT * from first";
+        Statement stmt = conn.createStatement();
+        ResultSet set=stmt.executeQuery(query);
+        List<String> object = new ArrayList<String>();
+
+        JSONObject selection = new JSONObject();
+//        JSONObject object = new JSONObject();
+        while (set.next()){
+//            int i = 0;
+            String id = Integer.toString(set.getInt(1));
+
+            selection.put("id",id);
+            selection.put("firstName",set.getString(2));
+            selection.put("lastName",set.getString(3));
+            selection.put("email",set.getString(4));
+//                    System.out.println(selection);
+           String selectionString= selection.toString();
+            object.add(selectionString);
+//            i++;
+//    json.putAll( selection );
+
+        }
+       
+        
+        
+        
+        return object;
+        
+    }
